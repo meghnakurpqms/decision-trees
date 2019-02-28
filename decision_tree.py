@@ -267,17 +267,17 @@ def confusion_matrix(y_true, y_pred):
 
 if __name__ == '__main__':
     # Load the training data
-    M = np.genfromtxt('./monks-1.train', missing_values=0, skip_header=0, delimiter=',', dtype=int)
+    M = np.genfromtxt('./pokertrain.data', missing_values=0, skip_header=0, delimiter=',', dtype=int)
     ytrn = M[:, 0]
     Xtrn = M[:, 1:]
 
     # Load the test data
-    M = np.genfromtxt('./monks-1.test', missing_values=0, skip_header=0, delimiter=',', dtype=int)
+    M = np.genfromtxt('./pokertest.data', missing_values=0, skip_header=0, delimiter=',', dtype=int)
     ytst = M[:, 0]
     Xtst = M[:, 1:]
 
     # Learn a decision tree of depth 3
-    decision_tree = id3(Xtrn, ytrn, max_depth=3)
+    decision_tree = id3(Xtrn, ytrn, max_depth=2)
     visualize(decision_tree)
 
     # Compute the test error
@@ -296,10 +296,10 @@ if __name__ == '__main__':
     print('Train Error = {0:4.2f}%.'.format(trn_err * 100))
 
     print('CONFUSION MATRIX')
-    print('|-----------------------------------------|')
-    print('|true_positive:',truepos,'  | false_positive',falsepos," |")
-    print('|-----------------------------------------|')
-    print('|true_negative:',trueneg,'  | false_negative',falseneg,'|')
-    print('|-----------------------------------------|')
+    print('|---------------------------------------------------')
+    print('|true_positive:',truepos,'         false_positive',falsepos,"     ")
+    print('|---------------------------------------------------')
+    print('|true_negative:',trueneg,'         false_negative',falseneg,'    ')
+    print('|---------------------------------------------------')
 
     
